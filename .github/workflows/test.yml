@@ -1,0 +1,11 @@
+- name: Explore the Linux Environment
+  run: |
+    echo "Current user running this script: $(whoami)"
+    echo "Current directory path: $(pwd)"
+    
+    # List all environment variables, search for 'GITHUB' using grep
+    env | grep GITHUB
+    
+    # Redirect an error stream to a log file
+    cat non_existent_file.txt 2> error.log || true
+    cat error.log
