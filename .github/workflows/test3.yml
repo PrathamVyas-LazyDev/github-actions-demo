@@ -1,0 +1,21 @@
+name: Explore Linux Environment - Lab 3
+on: [push]
+
+jobs:
+  build-and-pack: 
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout Code Repository
+        uses: actions/checkout@v4
+
+      - name: Grant Execute Permissions
+        run: chmod +x ./lab3-packer.sh
+        
+      - name: Run Build and Packer Script
+        run: ./lab3-packer.sh
+
+      - name: Upload Release Artifact to GitHub Cloud
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build-package
+          path: release-payload.tar.gz
